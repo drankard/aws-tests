@@ -1,0 +1,15 @@
+version: 0.1
+
+phases:
+  build:
+    commands:
+      - lein uberjar
+  test:
+    commands:
+      - lein test
+
+artifacts:
+  type: zip
+  files:
+    - target/lamda-test-transform-clj-0.1.0-SNAPSHOT-standalone.jar
+    - sam.yml
