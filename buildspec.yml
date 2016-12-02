@@ -13,7 +13,7 @@ phases:
       - lein test
 
 artifacts:
-  type: zip
+  type: NONE
   files:
     - target/lamda-test-transform-clj-0.1.0-SNAPSHOT-standalone.jar
     - app_spec.yml
