@@ -1,20 +1,16 @@
 version: 0.1
 
 phases:
-  pre_build:
-    commands:
-      - echo "PRE"
   build:
     commands:
       - lein uberjar
       - zip lamda-test-transform-clj.zip target/lamda-test-transform-clj-0.1.0-SNAPSHOT-standalone.jar
-      - echo "<<<<< >>>>>> HELLO !!!!"
   test:
     commands:
       - lein test
 
 artifacts:
-  type: NONE
+  type: zip
   files:
     - lamda-test-transform-clj.zip
   discard-paths: yes
