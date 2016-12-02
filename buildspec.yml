@@ -1,6 +1,9 @@
 version: 0.1
 
 phases:
+  pre_build:
+    commands:
+      - echo "PRE"
   build:
     commands:
       - lein uberjar
