@@ -5,7 +5,10 @@ phases:
     commands:
       - lein uberjar
       - zip lamda-test-transform-clj.zip target/lamda-test-transform-clj-0.1.0-SNAPSHOT-standalone.jar
-      - aws cloudformation package --template-file sam_spec.yml --output-template-file app_spec.yml --s3-bucket davids-cloudformation-artifacts
+      - aws cloudformation package \
+        --template-file sam_spec.yml \
+        --output-template-file app_spec.yml \
+        --s3-bucket davids-lambda-functions
   test:
     commands:
       - lein test

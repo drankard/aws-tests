@@ -1,9 +1,9 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Resources:
-    transform-geodata-clj:
+    transformGeodataClj:
         Type: AWS::Serverless::Function
         Properties:
            Handler: lamda_test_transform_clj.stream_handler
            Runtime: java8
-           CodeUri: s3://davids-lambda-functions/transform-geodata-clj.zip
+           CodeUri: s3://davids-lambda-functions/lamda-test-transform-clj.zip
