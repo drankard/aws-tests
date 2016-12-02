@@ -12,5 +12,5 @@ phases:
 artifacts:
   type: NONE
   files:
-    - target/lamda-test-transform-clj.zip
+    - lamda-test-transform-clj.zip
   discard-paths: yes
