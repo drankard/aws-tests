@@ -5,6 +5,7 @@ phases:
     commands:
       - lein uberjar
       - zip lamda-test-transform-clj.zip target/lamda-test-transform-clj-0.1.0-SNAPSHOT-standalone.jar
+      - echo "<<<<< >>>>>> HELLO !!!!"
   test:
     commands:
       - lein test
