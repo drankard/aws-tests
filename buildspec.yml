@@ -8,9 +8,6 @@ phases:
         --template-file sam_spec.yml \
         --output-template-file app_spec.yml \
         --s3-bucket davids-lambda-functions
-  test:
-    commands:
-      - lein test
 
 artifacts:
   type: NONE
