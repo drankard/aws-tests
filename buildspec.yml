@@ -1,6 +1,11 @@
 version: 0.1
 
 phases:
+  pre_build:
+    commands:
+      - curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+      - unzip awscli-bundle.zip
+      - sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
   build:
     commands:
       - lein uberjar
@@ -10,7 +15,7 @@ phases:
         --s3-bucket davids-lambda-functions
 
 artifacts:
-  type: NONE
+  type: zip
   files:
     - target/lamda-test-transform-clj-0.1.0-SNAPSHOT-standalone.jar
     - app_spec.yml
