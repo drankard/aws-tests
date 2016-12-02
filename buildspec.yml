@@ -4,13 +4,13 @@ phases:
   build:
     commands:
       - lein uberjar
+      - zip lamda-test-transform-clj.zip target/lamda-test-transform-clj-0.1.0-SNAPSHOT-standalone.jar
   test:
     commands:
       - lein test
 
 artifacts:
-  type: zip
+  type: NONE
   files:
-    - target/lamda-test-transform-clj-0.1.0-SNAPSHOT-standalone.jar
-    - sam.yml
+    - target/lamda-test-transform-clj.zip
   discard-paths: yes
