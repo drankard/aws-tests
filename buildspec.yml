@@ -4,7 +4,6 @@ phases:
   build:
     commands:
       - lein uberjar
-      - zip lamda-test-transform-clj.zip target/lamda-test-transform-clj-0.1.0-SNAPSHOT-standalone.jar
       - aws cloudformation package \
         --template-file sam_spec.yml \
         --output-template-file app_spec.yml \
@@ -16,5 +15,6 @@ phases:
 artifacts:
   type: zip
   files:
-    - lamda-test-transform-clj.zip
+    - target/lamda-test-transform-clj-0.1.0-SNAPSHOT-standalone.jar
+    - app_spec.yml
   discard-paths: yes
