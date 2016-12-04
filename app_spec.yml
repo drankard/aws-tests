@@ -6,4 +6,4 @@ Resources:
         Properties:
            Handler: lamda_test_transform_clj.stream_handler
            Runtime: java8
-           CodeUri: s3://davids-lambda-functions/lamda-test-transform-clj.zip
+#           CodeUri: s3://davids-lambda-functions/lamda-test-transform-clj.zip
