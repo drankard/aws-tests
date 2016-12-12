@@ -29,11 +29,20 @@ create-function:
 	--memory 512 \
 	--runtime java8
 
+add-permission:
+	aws lambda add-permission \
+	--function-name $(function-name) \
+	--region eu-west-1 \
+	--statement-id some-unique-id \
+	--action "lambda:InvokeFunction" \
+	--principal s3.amazonaws.com \
+	--source-arn arn:aws:s3:::davids-testbucket \
+	--source-account 593176282530 \
+
 update-function-code:
 	aws lambda update-function-code \
 	--function-name $(function-name) \
-	--s3-bucket $(s3-bucket) \
-	--s3-key $(function-name).zip
+	--zip-file fileb://./target/lamda-test-transform-clj-0.1.0-SNAPSHOT-standalone.jar
 
 invoke-function:
 	aws lambda invoke \
@@ -41,7 +50,7 @@ invoke-function:
 	--function-name $(function-name) \
 	--region $(aws-region) \
 	--log-type Tail \
-	--payload '{"key1":"value1", "key2":"value2", "key3":"value3"}' \
+	--payload file://resources/s3-put.json \
 	outputfile.txt 
 
 	cat outputfile.txt
@@ -50,5 +59,5 @@ delete-function:
 	aws lambda delete-function \
 	--function-name $(function-name)
 
-install: build-jar zip create-function
-reinstall: build-jar zip delete-function create-function
+install: build-jar zip create-function add-permission
+reinstall: build-jar zip update-function-code

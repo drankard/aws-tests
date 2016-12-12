@@ -6,5 +6,7 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [com.amazonaws/aws-lambda-java-core "1.1.0"]
                  [com.amazonaws/aws-lambda-java-events "1.3.0"]
-                 [org.clojure/data.json "0.2.6"]]
+                 [com.amazonaws/aws-java-sdk-s3 "1.11.66"]
+                 [org.clojure/data.json "0.2.6"]
+                 [clojure-csv/clojure-csv "2.0.1"]]
   :aot :all)
