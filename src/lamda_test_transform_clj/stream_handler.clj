@@ -8,14 +8,15 @@
             [clojure.java.io :as io]
             [clojure.pprint :refer [pprint]])
   (:import (com.amazonaws.services.s3 AmazonS3Client)
-           (com.amazonaws.services.s3.model GetObjectRequest)))
+           (com.amazonaws.services.s3.model GetObjectRequest)
+           (com.amazonaws.auth EnvironmentVariableCredentialsProvider)))
 
 (defn get-csv [event]
   (let [bn (get-in event [:Records 0 :s3 :bucket :name])
         k (get-in event [:Records 0 :s3 :object :key])
-        c (AmazonS3Client. )
+        c (AmazonS3Client. (EnvironmentVariableCredentialsProvider.))
         r (GetObjectRequest. bn k)
-        _ (prn bn)
+        _ (prn bn k)
         o (.getObject c r)
 
         ]
@@ -43,7 +44,7 @@
 
 (defn -handleRequest [this is os context]
   (let [w (io/writer os)]
-    (-> (json/read (io/reader is) :key-fn key->keyword)
+    (-> (json/read (io/reader is) :key-fn keyword)
         (handle-event)
         (json/write w))
     (.flush w)))
